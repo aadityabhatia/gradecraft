@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gradecraft"
+dynamic = ["version", "readme"]
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+python = [
+    "parso"
+]
+
+llm = [
+    "torch"
+]
+
+guidance = [
+    "guidance"
+]
+
+data = [
+    "polars"
+]
+
+all = [
+    "gradecraft[python,llm,guidance,data]"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+readme = {file = 'README.md'}
