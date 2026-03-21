@@ -76,12 +76,10 @@ def checkFunctionReturn(parsed_ast, fnName):
     return False
 
 
-def compileCode(parsed_ast, filename='main.py'):
+def compileCode(parsed_ast, filename='main.py', namespace={}):
     # Compile the modified AST
     code_object = compile(parsed_ast, filename=filename, mode='exec')
 
-    # Execute the code in a controlled namespace
-    namespace = {}
     # Prevents code under if __name__ == '__main__':
     namespace['__name__'] = '__not_main__'
     exec(code_object, namespace)
